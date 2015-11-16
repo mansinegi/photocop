@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>{{dtctrl.singlePic.title._content}}</h2>
+	{{dtctrl.allTags[0].id}}
+	<a href="{{dtctrl.singlePic.urls.url[0]._content}}"><img ng-src="https://farm{{dtctrl.singlePic.farm}}.staticflickr.com/{{dtctrl.singlePic.server}}/{{dtctrl.singlePic.id}}_{{dtctrl.singlePic.secret}}.jpg" height="100%" max-width="100%" border="1px solid black"></a>
+	<section>
+		<ul class="nav nav-pills">
+		  <li ng-class="{active: dtctrl.isSelected(1)}"><a href="#/details/{{dtctrl.picIndex}}" ng-click="dtctrl.selectTab(1)">Description</a></li>
+		  <li ng-class="{active: dtctrl.isSelected(2)}"><a href="#/details/{{dtctrl.picIndex}}" ng-click="dtctrl.selectTab(2)">Owner Details</a></li>
+		  <li ng-class="{active: dtctrl.isSelected(3)}"><a href="#/details/{{dtctrl.picIndex}}" ng-click="dtctrl.selectTab(3)">Tags</a></li>
+		</ul>
+	</section>
+
+	<div class="panel panel-default" ng-show="dtctrl.tab===1">
+	  
+	  <div class="panel-body">
+	  	<p>Description</p>
+	  	<table>
+	  		<tr> <td>Picture ID : </td> <td> {{dtctrl.singlePic.id}}</td></tr>
+	  		<tr> <td>Title : </td> <td>{{dtctrl.singlePic.title._content}}</td></tr>
+	  		<tr> <td>Content : </td><td>{{dtctrl.singlePic.description.content}}</td></tr>
+	  		<tr> <td>Url to Flickr Page : </td> <td><a href="{{dtctrl.singlePic.urls.url[0]._content}}">{{dtctrl.singlePic.urls.url[0]._content}}</a></td></tr>
+	  		<tr> <td>Picture Format : </td><td>{{dtctrl.singlePic.originalformat}}</td></tr>
+	  	</table>
+
+	  </div>
+	</div>
+	<div class="panel panel-default" ng-show="dtctrl.tab===2">
+	  <div class="panel-body">
+	   Owner Details
+
+	   <table>
+	  		<tr> <td>User Name : </td> <td> {{dtctrl.singlePic.owner.username}}</td></tr>
+	  		<tr> <td>Real Name : </td> <td>{{dtctrl.singlePic.owner.realname}}</td></tr>
+	  		<tr> <td>Location : </td><td>{{dtctrl.singlePic.owner.location}}</td></tr>
+	  		<tr> <td>Taken on Date/Time : </td> <td>{{dtctrl.singlePic.dates.taken}}</td></tr>
+	  		
+	  	</table>
+	  </div>
+	</div>
+	<div class="panel panel-default" ng-show="dtctrl.tab===3">
+	  <div class="panel-body">
+	  
+
+	    <table class="table table-striped">
+	    	<tbody>
+		  		<tr ng-repeat="it in dtctrl.allTags" rowspan="3">
+		  			 
+		  				<td>Tag Id : {{it.id}}</td>
+		  				<td>Tag Content : {{it.raw}}</td>
+		  				<td>Author : {{it.authorname}}</td> 
+		  		</tr>
+	  		</tbody>
+	  		
+	  	</table>
+	  </div>
+	</div>
+
+</body>
+</html>
+
+	
+

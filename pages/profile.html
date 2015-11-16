@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Your Favorite Pictures for the Day</h1>
+
+	<table class="table table-striped">
+		<tbody>
+			<tr ng-repeat="favt in pfctrl.response">
+
+				<td><img ng-src="https://farm{{favt.farm}}.staticflickr.com/{{favt.server}}/{{favt.id}}_{{favt.secret}}.jpg" height="200px" width="200px" border="1px solid black"></td>
+			
+				<td><a href="#/details/{{pfctrl.response.indexOf(favt)}}" ng-click="pfctrl.getDetails(favt)">Title : {{favt.title}}</a></td>
+
+				<td>
+					<button class="btn btn-danger" ng-click="pfctrl.removeFav(favt)">
+								<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</td>
+
+		
+				
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
+
+	
+
+
+
